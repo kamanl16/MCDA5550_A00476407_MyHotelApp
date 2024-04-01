@@ -2,6 +2,10 @@ package com.example.myhotelapp.ui;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.Spanned;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,8 +24,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 
 import com.example.myhotelapp.R;
+import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,8 +41,10 @@ public class RoomSearchFragment extends Fragment {
     private TextView titleTextView;
     private TextInputEditText guestsCountEditText;
     private TextInputEditText textInputCheckin, textInputCheckout;
+    private TextInputLayout textInputLayoutCheckin, textInputLayoutCheckout;
     private String checkInDate, checkOutDate, numberOfGuests;
     private Button searchButton;
+    private SimpleDateFormat dateFormat;
 
     @Nullable
     @Override
@@ -55,15 +63,16 @@ public class RoomSearchFragment extends Fragment {
         titleTextView.setText(R.string.title_welcome);
 
         textInputCheckin = view.findViewById(R.id.text_input_checkin);
+        textInputCheckin.setShowSoftInputOnFocus(false);
         textInputCheckin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Call the method when the TextInputEditText is clicked
                 DatePickerdialog();
             }
         });
 
         textInputCheckout = view.findViewById(R.id.text_input_checkout);
+        textInputCheckout.setShowSoftInputOnFocus(false);
         textInputCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +86,7 @@ public class RoomSearchFragment extends Fragment {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("log","This is the on click listener");
+                Log.i("log", "This is the on click listener");
                 checkInDate = textInputCheckin.getText().toString();
                 checkOutDate = textInputCheckout.getText().toString();
                 numberOfGuests = guestsCountEditText.getText().toString();

@@ -50,9 +50,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="2024-04-01"
+                    android:text="YYYY-MM-dd"
                     android:textColor="@color/colorOnPrimary"
-                    android:textSize="40sp" />
+                    android:textSize="20sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -71,9 +71,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="2024-04-01"
+                    android:text="YYYY-MM-dd"
                     android:textColor="@color/colorOnPrimary"
-                    android:textSize="40sp" />
+                    android:textSize="20sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -94,7 +94,6 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:inputType="numberDecimal"
-                    android:text="0"
                     android:textColor="@color/colorOnPrimary" />
 
             </com.google.android.material.textfield.TextInputLayout>

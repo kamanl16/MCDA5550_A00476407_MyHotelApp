@@ -4,13 +4,13 @@
     <color name="white">#FFFFFFFF</color>
 
     <!-- Primary Colors -->
-    <color name="colorPrimary">#F0B888</color>
+    <color name="colorPrimary">#442C2E</color>
     <color name="colorPrimaryVariant">#F4D5BA</color>
     <color name="colorPrimaryLight">#FAEEE3</color>
     <color name="colorPrimaryDark">#442C2E</color>
 
     <!-- Accent Color -->
-    <color name="colorSecondary">#757575</color>
+    <color name="colorSecondary">#BAD9F4</color>
     <color name="colorSecondaryVariant">#1069C0</color>
     <color name="colorSecondaryLight">#E2F0FA</color>
 
@@ -19,8 +19,8 @@
     <color name="colorBackgroundDark">#F5F5F5</color>
 
     <!-- Text Colors -->
-    <color name="colorOnPrimary">#442C2E</color>
-    <color name="colorOnSecondary">#BAD9F4</color>
+    <color name="colorOnPrimary">#F0B888</color>
+    <color name="colorOnSecondary">#757575</color>
     <color name="colorOnPrimaryDark">#F0B888</color>
 
     <!-- Border Color -->
