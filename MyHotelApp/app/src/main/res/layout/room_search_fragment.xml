@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main_constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/title_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="Welcome to Our Reservation System"
+                android:textAlignment="center"
+                android:textColor="@color/colorOnPrimary"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_checkin"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:hint="@string/hint_check_in_date"
+                app:layout_constraintEnd_toStartOf="@id/text_input_layout_checkout"
+                app:layout_constraintStart_toStartOf="@id/title_text_view"
+                app:layout_constraintTop_toBottomOf="@id/title_text_view">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_input_checkin"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="2024-04-01"
+                    android:textColor="@color/colorOnPrimary"
+                    android:textSize="40sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_checkout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:hint="@string/hint_check_out_date"
+                app:layout_constraintEnd_toEndOf="@id/title_text_view"
+                app:layout_constraintStart_toEndOf="@id/text_input_layout_checkin"
+                app:layout_constraintTop_toTopOf="@id/text_input_layout_checkin">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_input_checkout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="2024-04-01"
+                    android:textColor="@color/colorOnPrimary"
+                    android:textSize="40sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_guest"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="@string/hint_guest_no"
+                app:layout_constraintEnd_toEndOf="@id/text_input_layout_checkout"
+                app:layout_constraintStart_toStartOf="@id/text_input_layout_checkin"
+                app:layout_constraintTop_toBottomOf="@id/text_input_layout_checkin">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_input_guest"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:text="0"
+                    android:textColor="@color/colorOnPrimary" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/search_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/button_search"
+                android:textColor="@color/colorOnPrimary"
+                app:layout_constraintEnd_toEndOf="@id/text_input_layout_guest"
+                app:layout_constraintStart_toStartOf="@id/text_input_layout_guest"
+                app:layout_constraintTop_toBottomOf="@id/text_input_layout_guest" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

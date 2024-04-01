@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Primary Colors -->
+    <color name="colorPrimary">#F0B888</color>
+    <color name="colorPrimaryVariant">#F4D5BA</color>
+    <color name="colorPrimaryLight">#FAEEE3</color>
+
+    <!-- Accent Color -->
+    <color name="colorSecondary">#BAD9F4</color>
+    <color name="colorSecondaryVariant">#1069C0</color>
+    <color name="colorSecondaryLight">#E2F0FA</color>
+
+    <!-- Background Colors -->
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorBackgroundDark">#F5F5F5</color>
+
+    <!-- Text Colors -->
+    <color name="colorOnPrimary">#442C2E</color>
+    <color name="colorOnSecondary">#757575</color>
+
+    <!-- Border Color -->
+    <color name="borderColor">@android:color/darker_gray</color>
+
+    <!-- Error Color -->
+    <color name="colorError">#7F0000</color>
+
+    <!-- Success Color -->
+    <color name="colorSuccess">#D66B00</color>
+
+    <!-- Warning Color -->
+    <color name="colorWarning">#FFC107</color>
+
+    <!-- Info Color -->
+    <color name="colorInfo">#003B90</color>
+</resources>
