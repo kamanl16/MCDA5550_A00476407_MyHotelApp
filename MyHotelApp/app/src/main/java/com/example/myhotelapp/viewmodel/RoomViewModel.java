@@ -1,22 +1,21 @@
 package com.example.myhotelapp.viewmodel;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.myhotelapp.model.Room;
 import com.example.myhotelapp.data.repository.repository.RoomRepository;
+import com.example.myhotelapp.model.RoomDTO;
 
 import java.util.List;
 
 public class RoomViewModel extends ViewModel {
     private RoomRepository roomRepository;
-    private List<Room> allRooms;
 
-    public RoomViewModel(RoomRepository roomRepository) {
-        this.roomRepository = roomRepository;
-        allRooms = roomRepository.getAllRooms();
+    public void init () {
+        roomRepository = RoomRepository.getInstance();
     }
-
-    public List<Room> getAllRooms() {
-        return allRooms;
+    public LiveData<List<RoomDTO>> getAvailableRooms(String checkInDate, String checkOutDate, int numberOfGuests) {
+        return roomRepository.getAvailableRooms(checkInDate, checkOutDate, numberOfGuests);
     }
 }

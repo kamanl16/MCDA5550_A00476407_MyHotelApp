@@ -10,105 +10,270 @@
     <ScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main_constraint_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp">
 
             <TextView
                 android:id="@+id/title_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="30dp"
                 android:fontFamily="sans-serif"
-                android:gravity="center"
-                android:text="Welcome to Our Reservation System"
-                android:textAlignment="center"
+                android:gravity="left"
+                android:text="@string/title_reserve"
                 android:textColor="@color/colorOnPrimary"
-                android:textSize="30sp"
-                android:textStyle="bold"
+                android:textSize="@dimen/text_size_medium"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_layout_checkin"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="@dimen/box_radius"
+                app:cardElevation="3dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title_text_view"
+                app:strokeColor="@color/borderColor"
+                app:strokeWidth="1dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/second_constraint_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="20dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_layout_checkin"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        app:boxCornerRadiusBottomEnd="@dimen/box_radius"
+                        app:boxCornerRadiusBottomStart="@dimen/box_radius"
+                        app:boxCornerRadiusTopEnd="@dimen/box_radius"
+                        app:boxCornerRadiusTopStart="@dimen/box_radius"
+                        app:layout_constraintEnd_toStartOf="@id/text_input_layout_checkout"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/text_input_checkin"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:cursorVisible="false"
+                            android:gravity="center"
+                            android:paddingTop="25dp"
+                            android:paddingBottom="45dp"
+                            android:textColor="@color/colorOnPrimary"
+                            android:textSize="@dimen/text_size_xlarge"
+                            android:textStyle="bold" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/text_day_of_the_week_checkin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text=""
+                        android:textColor="@color/colorOnPrimary"
+                        android:textSize="@dimen/text_size_medium"
+                        app:layout_constraintEnd_toEndOf="@+id/text_input_layout_checkin"
+                        app:layout_constraintStart_toStartOf="@+id/text_input_layout_checkin"
+                        app:layout_constraintTop_toTopOf="@id/text_input_layout_checkin" />
+
+                    <TextView
+                        android:id="@+id/text_month_year_checkin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="28dp"
+                        android:text=""
+                        android:textColor="@color/colorOnPrimary"
+                        android:textSize="@dimen/text_size_medium"
+                        app:layout_constraintBottom_toBottomOf="@id/text_input_layout_checkin"
+                        app:layout_constraintEnd_toEndOf="@+id/text_input_layout_checkin"
+                        app:layout_constraintStart_toStartOf="@+id/text_input_layout_checkin" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="@string/hint_check_in_date"
+                        android:textSize="@dimen/text_size_small"
+                        app:layout_constraintBottom_toBottomOf="@id/text_input_layout_checkin"
+                        app:layout_constraintEnd_toEndOf="@+id/text_input_layout_checkin"
+                        app:layout_constraintStart_toStartOf="@+id/text_input_layout_checkin" />
+                    <TextView
+                        android:id="@+id/error_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:visibility="invisible"
+                        android:text="@string/EmptyDateError"
+                        android:textColor="@color/colorError"
+                        android:textSize="@dimen/text_size_small"
+                        app:layout_constraintStart_toStartOf="@+id/text_input_layout_checkin"
+                        app:layout_constraintTop_toBottomOf="@id/text_input_layout_checkin" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_layout_checkout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        app:boxCornerRadiusBottomEnd="@dimen/box_radius"
+                        app:boxCornerRadiusBottomStart="@dimen/box_radius"
+                        app:boxCornerRadiusTopEnd="@dimen/box_radius"
+                        app:boxCornerRadiusTopStart="@dimen/box_radius"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/text_input_layout_checkin"
+                        app:layout_constraintTop_toTopOf="@id/text_input_layout_checkin">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/text_input_checkout"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:cursorVisible="false"
+                            android:gravity="center"
+                            android:paddingTop="25dp"
+                            android:paddingBottom="45dp"
+                            android:textColor="@color/colorOnPrimary"
+                            android:textSize="@dimen/text_size_xlarge"
+                            android:textStyle="bold" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/text_day_of_the_week_checkout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/colorOnPrimary"
+                        android:textSize="@dimen/text_size_medium"
+                        app:layout_constraintEnd_toEndOf="@+id/text_input_layout_checkout"
+                        app:layout_constraintStart_toStartOf="@+id/text_input_layout_checkout"
+                        app:layout_constraintTop_toTopOf="@id/text_input_layout_checkout" />
+
+                    <TextView
+                        android:id="@+id/text_month_year_checkout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="28dp"
+                        android:textColor="@color/colorOnPrimary"
+                        android:textSize="@dimen/text_size_medium"
+                        app:layout_constraintBottom_toBottomOf="@id/text_input_layout_checkout"
+                        app:layout_constraintEnd_toEndOf="@+id/text_input_layout_checkout"
+                        app:layout_constraintStart_toStartOf="@+id/text_input_layout_checkout" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="@string/hint_check_out_date"
+                        android:textSize="@dimen/text_size_small"
+                        app:layout_constraintBottom_toBottomOf="@id/text_input_layout_checkout"
+                        app:layout_constraintEnd_toEndOf="@+id/text_input_layout_checkout"
+                        app:layout_constraintStart_toStartOf="@+id/text_input_layout_checkout" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_layout_guest"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        app:boxCornerRadiusBottomEnd="@dimen/box_radius"
+                        app:boxCornerRadiusBottomStart="@dimen/box_radius"
+                        app:boxCornerRadiusTopEnd="@dimen/box_radius"
+                        app:boxCornerRadiusTopStart="@dimen/box_radius"
+                        app:layout_constraintEnd_toEndOf="@id/text_input_layout_checkin"
+                        app:layout_constraintStart_toStartOf="@id/text_input_layout_checkin"
+                        app:layout_constraintTop_toBottomOf="@id/text_input_layout_checkin">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/text_input_guest"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="top|center_horizontal"
+                            android:inputType="numberDecimal"
+                            android:paddingBottom="20dp"
+                            android:text="0"
+                            android:textColor="@color/colorOnPrimary"
+                            android:textSize="@dimen/text_size_medium" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="@string/hint_guest_no"
+                        android:textSize="@dimen/text_size_small"
+                        app:layout_constraintBottom_toBottomOf="@id/text_input_layout_guest"
+                        app:layout_constraintEnd_toEndOf="@+id/text_input_layout_guest"
+                        app:layout_constraintStart_toStartOf="@+id/text_input_layout_guest" />
+                    <TextView
+                        android:id="@+id/error_guest_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/colorError"
+                        android:textSize="@dimen/text_size_small"
+                        app:layout_constraintStart_toStartOf="@+id/text_input_layout_guest"
+                        app:layout_constraintTop_toBottomOf="@id/text_input_layout_guest" />
+
+                    <Button
+                        android:id="@+id/search_button"
+                        style="@style/Widget.Material3.Button.UnelevatedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/button_search"
+                        android:textColor="@color/colorOnPrimary"
+                        android:textSize="@dimen/text_size_medium"
+                        app:layout_constraintBottom_toBottomOf="@id/text_input_layout_guest"
+                        app:layout_constraintEnd_toEndOf="@id/text_input_layout_checkout"
+                        app:layout_constraintStart_toStartOf="@id/text_input_layout_checkout"
+                        app:layout_constraintTop_toTopOf="@id/text_input_layout_guest" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/title_dine_text_view"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="10dp"
-                android:hint="@string/hint_check_in_date"
-                app:layout_constraintEnd_toStartOf="@id/text_input_layout_checkout"
-                app:layout_constraintStart_toStartOf="@id/title_text_view"
-                app:layout_constraintTop_toBottomOf="@id/title_text_view">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/text_input_checkin"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="YYYY-MM-dd"
-                    android:textColor="@color/colorOnPrimary"
-                    android:textSize="20sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_layout_checkout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:hint="@string/hint_check_out_date"
-                app:layout_constraintEnd_toEndOf="@id/title_text_view"
-                app:layout_constraintStart_toEndOf="@id/text_input_layout_checkin"
-                app:layout_constraintTop_toTopOf="@id/text_input_layout_checkin">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/text_input_checkout"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="YYYY-MM-dd"
-                    android:textColor="@color/colorOnPrimary"
-                    android:textSize="20sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_layout_guest"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:hint="@string/hint_guest_no"
-                app:layout_constraintEnd_toEndOf="@id/text_input_layout_checkout"
-                app:layout_constraintStart_toStartOf="@id/text_input_layout_checkin"
-                app:layout_constraintTop_toBottomOf="@id/text_input_layout_checkin">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/text_input_guest"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:inputType="numberDecimal"
-                    android:textColor="@color/colorOnPrimary" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Button
-                android:id="@+id/search_button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:text="@string/button_search"
+                android:fontFamily="sans-serif"
+                android:gravity="left"
+                android:text="@string/title_dine"
                 android:textColor="@color/colorOnPrimary"
-                app:layout_constraintEnd_toEndOf="@id/text_input_layout_guest"
-                app:layout_constraintStart_toStartOf="@id/text_input_layout_guest"
-                app:layout_constraintTop_toBottomOf="@id/text_input_layout_guest" />
+                android:textSize="@dimen/text_size_medium"
+                app:layout_constraintTop_toBottomOf="@id/card" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/dine_list_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="@id/title_dine_text_view"
+                app:layout_constraintTop_toBottomOf="@id/title_dine_text_view" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/divider_margin"
+                app:layout_constraintTop_toBottomOf="@id/dine_list_recycler_view" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

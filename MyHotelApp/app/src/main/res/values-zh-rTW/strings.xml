@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">我的應用</string>
-    <string name="title_welcome">歡迎使用我的應用！</string>
+    <string name="title_reserve">歡迎使用我的應用！</string>
+    <string name="title_location">地點</string>
+    <string name="title_gallery">圖庫</string>
+    <string name="title_dine">餐飲</string>
+    <string name="title_search_result">歡迎！ %2$s 至 %3$s 入住的 %1$s 位房客有空房</string>
+    <string name="title_guest">賓客資料</string>
+    <string name="menu_home">主頁</string>
+    <string name="hint_check_in_date">入住日期</string>
+    <string name="hint_check_out_date">退房日期</string>
+    <string name="hint_guest_no">賓客人數</string>
+    <string name="button_search">搜尋</string>
+    <string name="button_submit">提交</string>
+    <string name="emptyInput">錯誤</string>
+    <string name="EmptyDateError">請選擇入住和退房日期</string>
 </resources>

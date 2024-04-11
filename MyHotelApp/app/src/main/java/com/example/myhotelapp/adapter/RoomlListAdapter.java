@@ -8,19 +8,24 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.myhotelapp.R;
+import com.example.myhotelapp.model.ImageData;
 import com.example.myhotelapp.model.Room;
+import com.example.myhotelapp.model.RoomDTO;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RoomlListAdapter extends RecyclerView.Adapter<RoomlListAdapter.ViewHolder> {
 
-    private List<Room> roomData;
+    private List<RoomDTO> roomData;
     private LayoutInflater layoutInflater;
     private ItemClickListener clickListener;
 
-    public RoomlListAdapter(Context context, List<Room> roomData) {
+    public RoomlListAdapter(Context context, List<RoomDTO> roomData) {
         this.roomData = roomData;
         this.layoutInflater = LayoutInflater.from(context);
     }
@@ -34,13 +39,22 @@ public class RoomlListAdapter extends RecyclerView.Adapter<RoomlListAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull RoomlListAdapter.ViewHolder holder, int position) {
-        String roomType = roomData.get(position).getType().getTypeName();
-        String roomPrice = roomData.get(position).getPricePerNight().toString();
-        int roomOccupancy = roomData.get(position).getOccupancy();
+        String roomType = roomData.get(position).getRoom().getType().getTypeName();
+        String roomPrice = roomData.get(position).getRoom().getPricePerNight().toString();
+        int roomOccupancy = roomData.get(position).getRoom().getOccupancy();
 
         holder.roomName.setText(roomType);
-        holder.roomPrice.setText("$" + roomPrice);
-        holder.roomOccupancy.setText("Occupancy " + String.valueOf(roomOccupancy));
+        holder.roomPrice.setText("$" + roomPrice + " CAD / Night");
+        holder.roomOccupancy.setText("Maximum Occupancy: " + String.valueOf(roomOccupancy));
+
+        List<ImageData> imageData = roomData.get(position).getImages();
+        List<String> imageList = new ArrayList<>();
+        for (ImageData img : imageData) {
+            imageList.add(img.getPath());
+        }
+        ImageAdapter adapter = new ImageAdapter(imageList);
+        holder.viewPager.setAdapter(adapter);
+
     }
 
     @Override
@@ -59,13 +73,14 @@ public class RoomlListAdapter extends RecyclerView.Adapter<RoomlListAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView roomName, roomPrice, roomOccupancy;
+        ViewPager2 viewPager;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            roomName = itemView.findViewById(R.id.room_type_text_view);
-            roomPrice = itemView.findViewById(R.id.price_text_view);
-            roomOccupancy = itemView.findViewById(R.id.occupancy_text_view);
-
+            roomName = itemView.findViewById(R.id.recycle_room_title);
+            roomPrice = itemView.findViewById(R.id.recycle_room_price);
+            roomOccupancy = itemView.findViewById(R.id.recycle_room_occupancy);
+            viewPager = itemView.findViewById(R.id.recycle_viewPager);
             itemView.setOnClickListener(this);
         }
 

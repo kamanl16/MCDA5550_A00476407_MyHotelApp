@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_medium">20sp</dimen>
+    <dimen name="text_size_large">30sp</dimen>
+    <dimen name="text_size_xlarge">50sp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="box_radius">15dp</dimen>
+    <dimen name="divider_margin_xsmall">10dp</dimen>
+    <dimen name="divider_margin">20dp</dimen>
+
+    <dimen name="image_card_height">196dp</dimen>
+    <dimen name="room_image_card_height">280dp</dimen>
+</resources>

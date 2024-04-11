@@ -1,6 +1,7 @@
 package com.example.myhotelapp.model;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Room {
     private Long roomId;
