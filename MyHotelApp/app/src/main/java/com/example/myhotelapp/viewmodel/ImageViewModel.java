@@ -3,20 +3,21 @@ package com.example.myhotelapp.viewmodel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.myhotelapp.model.Reservation;
-import com.example.myhotelapp.model.Room;
+import com.example.myhotelapp.data.repository.repository.ImageRepository;
 import com.example.myhotelapp.data.repository.repository.RoomRepository;
+import com.example.myhotelapp.model.ImageData;
 import com.example.myhotelapp.model.RoomDTO;
 
 import java.util.List;
 
-public class RoomViewModel extends ViewModel {
-    private RoomRepository roomRepository;
+public class ImageViewModel extends ViewModel {
+    private ImageRepository imageRepository;
 
     public void init() {
-        roomRepository = RoomRepository.getInstance();
+        imageRepository = ImageRepository.getInstance();
     }
-    public LiveData<List<RoomDTO>> getAvailableRooms(String checkInDate, String checkOutDate, int numberOfGuests) {
-        return roomRepository.getAvailableRooms(checkInDate, checkOutDate, numberOfGuests);
+
+    public LiveData<List<ImageData>> getAllImages() {
+        return imageRepository.getAllImages();
     }
 }

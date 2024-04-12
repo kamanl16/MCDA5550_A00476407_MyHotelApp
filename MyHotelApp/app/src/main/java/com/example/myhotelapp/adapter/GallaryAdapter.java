@@ -12,43 +12,37 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myhotelapp.R;
 import com.example.myhotelapp.model.DineImage;
-import com.example.myhotelapp.model.ImageData;
-import com.example.myhotelapp.model.Room;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class DineListAdapter extends RecyclerView.Adapter<DineListAdapter.ViewHolder> {
-    private List<DineImage> imageData;
+public class GallaryAdapter extends RecyclerView.Adapter<GallaryAdapter.ViewHolder> {
+    private List<String> imageList;
     private LayoutInflater layoutInflater;
     private ItemClickListener clickListener;
 
-    public DineListAdapter(Context context, List<DineImage> imageData) {
-        this.imageData = imageData;
+    public GallaryAdapter(Context context, List<String> imageList) {
+        this.imageList = imageList;
         this.layoutInflater = LayoutInflater.from(context);
     }
 
     @NonNull
     @Override
-    public DineListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.dine_list_layout, parent, false);
+    public GallaryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = layoutInflater.inflate(R.layout.image_list_layout, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DineListAdapter.ViewHolder holder, int position) {
-        Integer imageRes = imageData.get(position).getImageResource();
-        String imageTitle = imageData.get(position).getTitle();
-        String imageDesc = imageData.get(position).getDescription();
-
-        holder.image.setImageResource(imageRes);
-        holder.title.setText(imageTitle);
-        holder.description.setText(imageDesc);
+    public void onBindViewHolder(@NonNull GallaryAdapter.ViewHolder holder, int position) {
+        String path = imageList.get(position);
+        Picasso.get().load(path).into(holder.imageView);
     }
 
     @Override
     public int getItemCount() {
-        if (imageData != null) {
-            return imageData.size();
+        if (imageList != null) {
+            return imageList.size();
         } else {
             return 0;
         }
@@ -60,14 +54,11 @@ public class DineListAdapter extends RecyclerView.Adapter<DineListAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        ImageView image;
-        TextView title, description;
+        ImageView imageView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            image = itemView.findViewById(R.id.recycle_image);
-            title = itemView.findViewById(R.id.recycle_title);
-            description = itemView.findViewById(R.id.recycle_description);
+            imageView = itemView.findViewById(R.id.recycle_image);
 
             itemView.setOnClickListener(this);
         }

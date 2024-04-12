@@ -30,9 +30,9 @@
                 android:gravity="left"
                 android:text="@string/title_dine"
                 android:textColor="@color/colorOnPrimary"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 android:textSize="@dimen/text_size_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteY="75dp" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -45,10 +45,34 @@
                 app:layout_constraintTop_toBottomOf="@id/title_dine_text_view" />
 
             <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/divider_margin"
                 app:layout_constraintTop_toBottomOf="@id/dine_list_recycler_view" />
+
+            <TextView
+                android:id="@+id/title_gallery_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif"
+                android:gravity="left"
+                android:text="@string/title_gallery"
+                android:textColor="@color/colorOnPrimary"
+                android:textSize="@dimen/text_size_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/divider1"
+                tools:layout_editor_absoluteY="75dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/gallery_list_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="@id/title_gallery_text_view"
+                app:layout_constraintTop_toBottomOf="@id/title_gallery_text_view" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

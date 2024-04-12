@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "ImageData")
 public class ImageData {
-    @jakarta.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "image_id")
     private Long imageId;

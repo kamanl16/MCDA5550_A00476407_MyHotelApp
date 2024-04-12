@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.myhotelapp.data.api.ApiClient;
+import com.example.myhotelapp.model.ImageData;
 import com.example.myhotelapp.model.RoomDTO;
 
 import java.util.List;
@@ -12,33 +13,33 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RoomRepository {
-    private static RoomRepository instance;
+public class ImageRepository {
+    private static ImageRepository instance;
 
-    public static RoomRepository getInstance(){
+    public static ImageRepository getInstance(){
         if (instance == null) {
-            instance = new RoomRepository();
+            instance = new ImageRepository();
         }
         return instance;
     }
 
-    public LiveData<List<RoomDTO>> getAvailableRooms(String checkInDate, String checkOutDate, int numberOfGuests) {
-        MutableLiveData<List<RoomDTO>> roomsLiveData = new MutableLiveData<>();
-        ApiClient.getApiService().getAvailableRooms(checkInDate, checkOutDate, numberOfGuests).enqueue(new Callback<List<RoomDTO>>() {
+    public LiveData<List<ImageData>> getAllImages() {
+        MutableLiveData<List<ImageData>> imageData = new MutableLiveData<>();
+        ApiClient.getApiService().getAllImages().enqueue(new Callback<List<ImageData>>() {
             @Override
-            public void onResponse(Call<List<RoomDTO>> call, Response<List<RoomDTO>> response) {
+            public void onResponse(Call<List<ImageData>> call, Response<List<ImageData>> response) {
                 if (response.isSuccessful()) {
-                    roomsLiveData.setValue(response.body());
+                    imageData.setValue(response.body());
                 } else {
-                    roomsLiveData.setValue(null);
+                    imageData.setValue(null);
                 }
             }
 
             @Override
-            public void onFailure(Call<List<RoomDTO>> call, Throwable t) {
-                roomsLiveData.setValue(null);
+            public void onFailure(Call<List<ImageData>> call, Throwable t) {
+                imageData.setValue(null);
             }
         });
-        return roomsLiveData;
+        return imageData;
     }
 }

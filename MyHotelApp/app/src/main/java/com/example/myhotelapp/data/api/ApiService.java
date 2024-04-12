@@ -1,6 +1,7 @@
 package com.example.myhotelapp.data.api;
 
 import com.example.myhotelapp.model.Hotel;
+import com.example.myhotelapp.model.ImageData;
 import com.example.myhotelapp.model.Reservation;
 import com.example.myhotelapp.model.ReservationDTO;
 import com.example.myhotelapp.model.Room;
@@ -32,4 +33,10 @@ public interface ApiService {
 
     @POST("api/reservations/{id}/remark")
     Call<Reservation> updateReservationRemark(@Path("id") Long reservationId, @Body String remark);
+
+    @GET("/getAllImages")
+    Call<List<ImageData>> getAllImages();
+
+    @GET("/getImagesByCat")
+    Call<List<ImageData>> findByCatTypeAndCatId(@Query("catType") int catType, @Query("catId") Long catId);
 }
