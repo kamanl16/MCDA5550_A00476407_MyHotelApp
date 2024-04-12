@@ -1,6 +1,8 @@
 package com.example.myhotelapp.ui;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +27,7 @@ import com.example.myhotelapp.model.RoomDTO;
 import com.example.myhotelapp.viewmodel.ReservationViewModel;
 import com.example.myhotelapp.viewmodel.RoomViewModel;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -73,6 +76,84 @@ public class CheckoutFragment extends Fragment {
         // Add input fields dynamically
         for (int i = 0; i < numberOfGuests; i++) {
             View guestView = inflater.inflate(R.layout.guest_info_layout, guestInfoLayout, false);
+            TextInputLayout nameInputLayout = guestView.findViewById(R.id.nameInputLayout);
+            TextInputEditText nameEditText = guestView.findViewById(R.id.nameEditText);
+            TextInputLayout emailInputLayout = guestView.findViewById(R.id.emailInputLayout);
+            TextInputEditText emailEditText = guestView.findViewById(R.id.emailEditText);
+            TextInputLayout phoneInputLayout = guestView.findViewById(R.id.phoneInputLayout);
+            TextInputEditText phoneEditText = guestView.findViewById(R.id.phoneEditText);
+
+            nameEditText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
+                    // Not used
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+                    // Validate name input as user types
+                    String name = charSequence.toString();
+                    if (name.isEmpty()) {
+                        nameInputLayout.setError("Name cannot be empty");
+                    } else {
+                        nameInputLayout.setError(null); // Clear error message
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+                    // Not used
+                }
+            });
+
+            emailEditText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
+                    // Not used
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+                    // Validate name input as user types
+                    String email = emailEditText.getText().toString();
+                    if (email.isEmpty()) {
+                        emailInputLayout.setError("Email cannot be empty");
+                    } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                        emailInputLayout.setError("Invalid email format");
+                    } else {
+                        emailInputLayout.setError(null); // Clear error message
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+                    // Not used
+                }
+            });
+            phoneEditText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
+                    // Not used
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+                    // Validate name input as user types
+                    String phone = phoneEditText.getText().toString();
+                    if (phone.isEmpty()) {
+                        phoneInputLayout.setError("Phone cannot be empty");
+                    } else if (!android.util.Patterns.PHONE.matcher(phone).matches()) {
+                        phoneInputLayout.setError("Invalid phone number format");
+                    } else {
+                        phoneInputLayout.setError(null); // Clear error message
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable) {
+                    // Not used
+                }
+            });
             guestInfoLayout.addView(guestView);
         }
 

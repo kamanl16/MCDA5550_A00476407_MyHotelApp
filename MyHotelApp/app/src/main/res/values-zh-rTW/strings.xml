@@ -27,7 +27,6 @@
     <string name="menu_edit">編輯</string>
     <string name="menu_more">更多</string>
     <string name="hint_reservation_id">預訂ID</string>
-    <string name="title_name">賓客名盉</string>
     <string name="title_name">賓客名稱</string>
     <string name="title_email">電郵地址</string>
     <string name="title_phone">電話號碼</string>

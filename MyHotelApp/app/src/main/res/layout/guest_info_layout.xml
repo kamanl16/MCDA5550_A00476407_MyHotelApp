@@ -63,7 +63,7 @@
             android:id="@+id/phoneEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone"
+            android:hint="000-000-0000"
             android:textColor="@color/colorOnPrimary"
             android:textSize="@dimen/text_size_small" />
     </com.google.android.material.textfield.TextInputLayout>
