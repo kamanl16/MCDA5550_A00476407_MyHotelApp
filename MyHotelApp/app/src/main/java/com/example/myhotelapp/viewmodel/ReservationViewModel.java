@@ -31,6 +31,11 @@ public class ReservationViewModel extends ViewModel {
         return reservationRepository.addReservation(resDTO);
     }
 
+    public LiveData<ReservationDTO> getReservationById(String reservationId) throws ParseException {
+        Long id = Long.parseLong(reservationId);
+        return reservationRepository.getReservationById(id);
+    }
+
     private Date convertToDate(String dateString) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date date = sdf.parse(dateString);

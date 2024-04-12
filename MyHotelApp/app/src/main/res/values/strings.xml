@@ -14,18 +14,29 @@
     <string name="title_reserve_info">Reservation Record</string>
     <string name="title_reserve_id">Reservation ID</string>
     <string name="title_reserve_details">Reservation Details</string>
+    <string name="title_name">Guest Name</string>
+    <string name="title_email">Email</string>
+    <string name="title_phone">Phone</string>
     <string name="title_language">Language</string>
     <string name="option_en">English</string>
     <string name="option_tc">Traditional Chinese</string>
 
     <string name="menu_home">Home</string>
+    <string name="menu_edit">Edit</string>
+    <string name="menu_more">More</string>
 
     <string name="hint_check_in_date">Check-in Date</string>
     <string name="hint_check_out_date">Check-out Date</string>
     <string name="hint_guest_no">Guests Count</string>
+    <string name="hint_reservation_id">Reservation ID</string>
 
     <string name="button_search">Search</string>
     <string name="button_submit">Submit</string>
     <string name="emptyInput">Error</string>
     <string name="EmptyDateError">Please select Check-in and Check-out Date.</string>
+
+    <string name="name_restaurant1" translatable="false">Ristorante Bella Vista</string>
+    <string name="name_restaurant2" translatable="false">Palm Breeze Café</string>
+    <string name="name_restaurant1_cusine">Italian</string>
+    <string name="name_restaurant2_cusine">Tropical Fusion</string>
 </resources>

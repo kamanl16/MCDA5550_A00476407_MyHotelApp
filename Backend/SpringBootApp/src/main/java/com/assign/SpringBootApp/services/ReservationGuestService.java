@@ -22,6 +22,8 @@ public class ReservationGuestService {
     private ReservationRepository reservationRepository;
     @Autowired
     private GuestRepository guestRepository;
+    @Autowired
+    private RoomRepository roomRepository;
 
     @Transactional
     public Reservation addGuestsAndLinkToReservation(List<Guest> guests, Reservation reservation) {
@@ -54,6 +56,9 @@ public class ReservationGuestService {
         // Retrieve guests associated with the reservation
         List<Guest> guests = guestRepository.findByReservationsReservationId(reservationId);
         reservationDTO.setGuests(guests);
+
+        Room room = roomRepository.findById(reservation.getRoomId()).orElse(null);
+        reservationDTO.setRoom(room);
 
         return reservationDTO;
     }

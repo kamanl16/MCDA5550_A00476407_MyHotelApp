@@ -47,7 +47,9 @@
                 android:id="@+id/stay_date_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_small"
                 android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_small"
                 android:fontFamily="sans-serif"
                 android:gravity="left"
                 android:text="2024-04-11-2024-04-16 (5 Nights)"
@@ -60,13 +62,14 @@
                 android:id="@+id/room_type_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_small"
                 android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_small"
                 android:fontFamily="sans-serif"
                 android:gravity="left"
                 android:text="Standard Room, Double Bed, City View"
                 android:textColor="@color/colorOnPrimary"
-                android:textSize="@dimen/text_size_small"
-                />
+                android:textSize="@dimen/text_size_small" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
@@ -76,6 +79,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_small"
                 android:orientation="horizontal">
 
                 <TextView
@@ -98,12 +103,14 @@
                     android:gravity="right"
                     android:text="0"
                     android:textColor="@color/colorOnPrimary"
-                    android:textSize="@dimen/text_size_small"/>
+                    android:textSize="@dimen/text_size_small" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:layout_marginRight="@dimen/margin_small"
                 android:orientation="horizontal">
 
                 <TextView
@@ -126,7 +133,7 @@
                     android:gravity="right"
                     android:text="CAD 100"
                     android:textColor="@color/colorOnPrimary"
-                    android:textSize="@dimen/text_size_small"/>
+                    android:textSize="@dimen/text_size_small" />
             </LinearLayout>
 
             <TextView
@@ -138,7 +145,7 @@
                 android:gravity="left"
                 android:text="@string/title_guest"
                 android:textColor="@color/colorSecondary"
-                android:textSize="@dimen/text_size_xsmall" />
+                android:textSize="@dimen/text_size_small" />
 
 
             <LinearLayout

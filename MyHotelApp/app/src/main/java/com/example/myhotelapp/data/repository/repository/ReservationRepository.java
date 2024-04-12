@@ -18,6 +18,7 @@ import retrofit2.Response;
 public class ReservationRepository {
     private static ReservationRepository instance;
     private MutableLiveData<Reservation> reservationLiveData = new MutableLiveData<>();
+    private MutableLiveData<ReservationDTO> reservationDTOLiveData = new MutableLiveData<>();
 
     public static ReservationRepository getInstance() {
         if (instance == null) {
@@ -30,29 +31,37 @@ public class ReservationRepository {
         ApiClient.getApiService().addReservation(reservationDTO).enqueue(new Callback<Reservation>() {
             @Override
             public void onResponse(Call<Reservation> call, Response<Reservation> response) {
-                try {
-                    if (response.isSuccessful() || response.code() == 201) {
-                        reservationLiveData.setValue(response.body());
-                    } else {
-                        reservationLiveData.setValue(null);
-                    }
-                } catch (Exception e) {
-                    Log.e("onResponse", "Exception: " + e.getMessage());
+                if (response.isSuccessful() || response.code() == 201) {
+                    reservationLiveData.setValue(response.body());
+                } else {
                     reservationLiveData.setValue(null);
                 }
             }
 
             @Override
             public void onFailure(Call<Reservation> call, Throwable throwable) {
-                    try {
-                    Log.e("onFailure", "Throwable: " + throwable.getMessage());
-                    reservationLiveData.setValue(null);
-                } catch (Exception e) {
-                    Log.e("onFailure", "Exception: " + e.getMessage());
-                    reservationLiveData.setValue(null);
-                }
+                reservationLiveData.setValue(null);
             }
         });
         return reservationLiveData;
+    }
+
+    public LiveData<ReservationDTO> getReservationById(Long reservationId) {
+        ApiClient.getApiService().getReservationById(reservationId).enqueue(new Callback<ReservationDTO>() {
+            @Override
+            public void onResponse(Call<ReservationDTO> call, Response<ReservationDTO> response) {
+                if (response.isSuccessful() || response.code() == 201) {
+                    reservationDTOLiveData.setValue(response.body());
+                } else {
+                    reservationDTOLiveData.setValue(null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ReservationDTO> call, Throwable throwable) {
+                reservationDTOLiveData.setValue(null);
+            }
+        });
+        return reservationDTOLiveData;
     }
 }

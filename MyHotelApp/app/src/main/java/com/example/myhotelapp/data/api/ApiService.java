@@ -27,7 +27,7 @@ public interface ApiService {
     @POST("api/reservations")
     Call<Reservation> addReservation(@Body ReservationDTO reservationDTO);
 
-    @POST("api/reservations/{id}")
+    @GET("api/reservations/{id}")
     Call<ReservationDTO> getReservationById(@Path("id") Long reservationId);
 
     @POST("api/reservations/{id}/remark")

@@ -8,9 +8,9 @@
     <item
         android:id="@+id/edit_menu"
         android:icon="@drawable/ic_edit_record_foreground"
-        android:title="Edit" />
+        android:title="@string/menu_edit" />
     <item
         android:id="@+id/more_menu"
         android:icon="@drawable/ic_more_foreground"
-        android:title="More" />
+        android:title="@string/menu_more" />
 </menu>

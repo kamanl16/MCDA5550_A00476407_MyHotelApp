@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main_constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp">
+
+            <TextView
+                android:id="@+id/title_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif"
+                android:gravity="left"
+                android:text="@string/title_reserve_info"
+                android:textColor="@color/colorOnPrimary"
+                android:textSize="@dimen/text_size_medium"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="@dimen/box_radius"
+                app:cardElevation="3dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title_text_view"
+                app:strokeColor="@color/borderColor"
+                app:strokeWidth="1dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/second_constraint_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="20dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_layout_resrvatino_id"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        app:boxCornerRadiusBottomEnd="@dimen/box_radius"
+                        app:boxCornerRadiusBottomStart="@dimen/box_radius"
+                        app:boxCornerRadiusTopEnd="@dimen/box_radius"
+                        app:boxCornerRadiusTopStart="@dimen/box_radius"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/text_input_resrvation_id"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:cursorVisible="false"
+                            android:paddingBottom="20dp"
+                            android:textColor="@color/colorOnPrimary"
+                            android:textSize="@dimen/text_size_medium" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:text="@string/hint_reservation_id"
+                        android:textSize="@dimen/text_size_xsmall"
+                        app:layout_constraintBottom_toBottomOf="@id/text_input_layout_resrvatino_id"
+                        app:layout_constraintEnd_toEndOf="@+id/text_input_layout_resrvatino_id"
+                        app:layout_constraintStart_toStartOf="@+id/text_input_layout_resrvatino_id" />
+
+                    <Button
+                        android:id="@+id/search_button"
+                        style="@style/Widget.Material3.Button.UnelevatedButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:text="@string/button_search"
+                        android:textColor="@color/colorOnPrimary"
+                        android:textSize="@dimen/text_size_medium"
+                        app:layout_constraintEnd_toEndOf="@id/text_input_layout_resrvatino_id"
+                        app:layout_constraintStart_toStartOf="@id/text_input_layout_resrvatino_id"
+                        app:layout_constraintTop_toBottomOf="@id/text_input_layout_resrvatino_id" />
+
+                    <TextView
+                        android:id="@+id/error_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/colorError"
+                        android:textSize="@dimen/text_size_xsmall"
+                        app:layout_constraintStart_toStartOf="@+id/search_button"
+                        app:layout_constraintTop_toBottomOf="@id/search_button" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

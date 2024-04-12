@@ -146,16 +146,8 @@ public class CheckoutFragment extends Fragment {
 
     private void goToResultFragment(Reservation reservation) {
         Bundle bundle = new Bundle();
-        bundle.putParcelable("reservation", reservation);
-        bundle.putString("checkInDate", checkInDate);
-        bundle.putString("checkOutDate", checkOutDate);
-        bundle.putInt("numberOfGuests", numberOfGuests);
-
-        DecimalFormat df = new DecimalFormat("#,##0.##");
-        String formattedString = df.format(totalPrice);
-        bundle.putString("totalPrice", formattedString);
-
-        bundle.putParcelable("room", room);
+        ReservationDTO resDTO = new ReservationDTO(getGuestInfo(), reservation, room);
+        bundle.putParcelable("reservationDTO", resDTO);
 
         ReservationRecordFragment reservationRecordFragment = new ReservationRecordFragment();
         reservationRecordFragment.setArguments(bundle);
