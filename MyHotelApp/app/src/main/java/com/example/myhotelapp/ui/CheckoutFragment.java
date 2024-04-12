@@ -194,7 +194,7 @@ public class CheckoutFragment extends Fragment {
                             if (reservation != null) {
                                 goToResultFragment(reservation);
                             } else {
-                                Toast.makeText(getActivity(), "Failed to fetch room data", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Failed to reserve. \nPlease try again later.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

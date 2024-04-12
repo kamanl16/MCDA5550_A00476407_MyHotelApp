@@ -5,20 +5,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myhotelapp.R;
-import com.example.myhotelapp.model.DineImage;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class GallaryAdapter extends RecyclerView.Adapter<GallaryAdapter.ViewHolder> {
-    private List<String> imageList;
-    private LayoutInflater layoutInflater;
+    private final List<String> imageList;
+    private final LayoutInflater layoutInflater;
     private ItemClickListener clickListener;
 
     public GallaryAdapter(Context context, List<String> imageList) {
