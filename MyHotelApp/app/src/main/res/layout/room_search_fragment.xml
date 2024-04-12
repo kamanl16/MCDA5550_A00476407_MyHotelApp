@@ -84,7 +84,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text=""
                         android:textColor="@color/colorOnPrimary"
                         android:textSize="@dimen/text_size_medium"
                         app:layout_constraintEnd_toEndOf="@+id/text_input_layout_checkin"
@@ -96,7 +95,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="28dp"
-                        android:text=""
                         android:textColor="@color/colorOnPrimary"
                         android:textSize="@dimen/text_size_medium"
                         app:layout_constraintBottom_toBottomOf="@id/text_input_layout_checkin"
@@ -108,7 +106,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
                         android:text="@string/hint_check_in_date"
-                        android:textSize="@dimen/text_size_small"
+                        android:textSize="@dimen/text_size_xsmall"
                         app:layout_constraintBottom_toBottomOf="@id/text_input_layout_checkin"
                         app:layout_constraintEnd_toEndOf="@+id/text_input_layout_checkin"
                         app:layout_constraintStart_toStartOf="@+id/text_input_layout_checkin" />
@@ -121,7 +119,7 @@
                         android:visibility="invisible"
                         android:text="@string/EmptyDateError"
                         android:textColor="@color/colorError"
-                        android:textSize="@dimen/text_size_small"
+                        android:textSize="@dimen/text_size_xsmall"
                         app:layout_constraintStart_toStartOf="@+id/text_input_layout_checkin"
                         app:layout_constraintTop_toBottomOf="@id/text_input_layout_checkin" />
 
@@ -179,7 +177,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
                         android:text="@string/hint_check_out_date"
-                        android:textSize="@dimen/text_size_small"
+                        android:textSize="@dimen/text_size_xsmall"
                         app:layout_constraintBottom_toBottomOf="@id/text_input_layout_checkout"
                         app:layout_constraintEnd_toEndOf="@+id/text_input_layout_checkout"
                         app:layout_constraintStart_toStartOf="@+id/text_input_layout_checkout" />
@@ -216,7 +214,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="2dp"
                         android:text="@string/hint_guest_no"
-                        android:textSize="@dimen/text_size_small"
+                        android:textSize="@dimen/text_size_xsmall"
                         app:layout_constraintBottom_toBottomOf="@id/text_input_layout_guest"
                         app:layout_constraintEnd_toEndOf="@+id/text_input_layout_guest"
                         app:layout_constraintStart_toStartOf="@+id/text_input_layout_guest" />
@@ -227,7 +225,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginLeft="5dp"
                         android:textColor="@color/colorError"
-                        android:textSize="@dimen/text_size_small"
+                        android:textSize="@dimen/text_size_xsmall"
                         app:layout_constraintStart_toStartOf="@+id/text_input_layout_guest"
                         app:layout_constraintTop_toBottomOf="@id/text_input_layout_guest" />
 

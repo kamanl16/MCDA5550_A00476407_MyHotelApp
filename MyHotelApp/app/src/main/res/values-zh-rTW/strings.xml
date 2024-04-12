@@ -4,8 +4,16 @@
     <string name="title_location">地點</string>
     <string name="title_gallery">圖庫</string>
     <string name="title_dine">餐飲</string>
-    <string name="title_search_result">歡迎！ %2$s 至 %3$s 入住的 %1$s 位房客有空房</string>
+    <string name="title_search_result">歡迎！ %2$s 至 %3$s 入住的 %1$d 位房客有空房</string>
     <string name="title_guest">賓客資料</string>
+    <string name="title_stay_info">住宿資訊</string>
+    <string name="title_charge_info">收費摘要</string>
+    <string name="title_total">合計</string>
+    <string name="title_tax">稅項</string>
+    <string name="title_status">狀態</string>
+    <string name="title_reserve_info">預訂記錄</string>
+    <string name="title_reserve_id">預訂ID</string>
+    <string name="title_reserve_details">預訂詳情</string>
     <string name="menu_home">主頁</string>
     <string name="hint_check_in_date">入住日期</string>
     <string name="hint_check_out_date">退房日期</string>

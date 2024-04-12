@@ -59,7 +59,8 @@ public class RoomSearchFragment extends Fragment {
     private TextInputEditText guestsCountEditText;
     private TextInputEditText textInputCheckin, textInputCheckout;
     private TextInputLayout textInputLayoutCheckin, textInputLayoutCheckout, textInputLayoutGuest;
-    private String checkInDate, checkOutDate, numberOfGuests;
+    private String checkInDate, checkOutDate;
+    private int numberOfGuests;
     private Button searchButton;
     private SimpleDateFormat dateFormat;
     private boolean isGuestNoOK = false;
@@ -157,6 +158,7 @@ public class RoomSearchFragment extends Fragment {
                             isGuestNoOK = false;
                         } else {
                             errorGuestTextView.setText(null);
+                            numberOfGuests = numGuests;
                             isGuestNoOK = true;
                         }
                     } catch (NumberFormatException e) {
@@ -177,12 +179,10 @@ public class RoomSearchFragment extends Fragment {
                 } else if (!isGuestNoOK) {
                     errorGuestTextView.setText("Number of guests must be greater than 0");
                 } else {
-                    numberOfGuests = guestsCountEditText.getText().toString();
-
                     Bundle bundle = new Bundle();
                     bundle.putString("check in date", checkInDate);
                     bundle.putString("check out date", checkOutDate);
-                    bundle.putString("number of guests", numberOfGuests);
+                    bundle.putInt("number of guests", numberOfGuests);
 
                     RoomsListFragment roomsListFragment = new RoomsListFragment();
                     roomsListFragment.setArguments(bundle);

@@ -1,7 +1,12 @@
 package com.example.myhotelapp.model;
 
 
-public class RoomType {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class RoomType implements Parcelable {
 
     private Long typeId;
 
@@ -22,6 +27,36 @@ public class RoomType {
         this.typeName = typeName;
         this.occupancy = occupancy;
     }
+
+    protected RoomType(Parcel in) {
+        if (in.readByte() == 0) {
+            typeId = null;
+        } else {
+            typeId = in.readLong();
+        }
+        typeName = in.readString();
+        typeName_TC = in.readString();
+        occupancy = in.readInt();
+        bedType = in.readString();
+        bedType_TC = in.readString();
+        view = in.readString();
+        view_TC = in.readString();
+        size = in.readString();
+        description = in.readString();
+        description_TC = in.readString();
+    }
+
+    public static final Creator<RoomType> CREATOR = new Creator<RoomType>() {
+        @Override
+        public RoomType createFromParcel(Parcel in) {
+            return new RoomType(in);
+        }
+
+        @Override
+        public RoomType[] newArray(int size) {
+            return new RoomType[size];
+        }
+    };
 
     public Long getTypeId() {
         return typeId;
@@ -109,5 +144,30 @@ public class RoomType {
 
     public void setDescription_TC(String description_TC) {
         this.description_TC = description_TC;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        if (typeId == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(typeId);
+        }
+        dest.writeString(typeName);
+        dest.writeString(typeName_TC);
+        dest.writeInt(occupancy);
+        dest.writeString(bedType);
+        dest.writeString(bedType_TC);
+        dest.writeString(view);
+        dest.writeString(view_TC);
+        dest.writeString(size);
+        dest.writeString(description);
+        dest.writeString(description_TC);
     }
 }

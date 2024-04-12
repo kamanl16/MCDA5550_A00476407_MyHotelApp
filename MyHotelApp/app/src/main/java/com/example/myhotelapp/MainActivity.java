@@ -7,11 +7,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myhotelapp.ui.RoomSearchFragment;
+import com.example.myhotelapp.ui.SettingFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnItemSelectedListener {
     BottomNavigationView bottomNavigationView;
     RoomSearchFragment roomSearchFragment = new RoomSearchFragment();
+    SettingFragment settingFragment = new SettingFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
 
             case R.id.more_menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, roomSearchFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, settingFragment).commit();
                 return true;
         }
         return false;

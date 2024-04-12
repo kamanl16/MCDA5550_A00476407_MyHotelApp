@@ -52,7 +52,7 @@
                     android:text="International"
                     android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textColor="@color/colorSecondary"
-                    android:textSize="@dimen/text_size_small" />
+                    android:textSize="@dimen/text_size_xsmall" />
 
 
             </LinearLayout>

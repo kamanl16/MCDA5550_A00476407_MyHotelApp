@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,8 +31,8 @@ public class RoomsListFragment extends Fragment implements ItemClickListener {
     ProgressBar progressBar;
     List<RoomDTO> userListResponseData;
     private View view;
-    private String checkInDate, checkOutDate, numberOfGuests;
-
+    private String checkInDate, checkOutDate;
+    private int numberOfGuests;
     private RoomViewModel roomViewModel;
 
     @Nullable
@@ -52,23 +53,24 @@ public class RoomsListFragment extends Fragment implements ItemClickListener {
         progressBar = view.findViewById(R.id.progress_bar);
         checkInDate = getArguments().getString("check in date");
         checkOutDate = getArguments().getString("check out date");
-        numberOfGuests = getArguments().getString("number of guests");
+        numberOfGuests = getArguments().getInt("number of guests");
 
-        //Set up the header
-        headingTextView.setText(getString(R.string.title_search_result, numberOfGuests, checkInDate, checkOutDate));
-
-        progressBar.setVisibility(View.VISIBLE);
-        roomViewModel.getAvailableRooms(checkInDate, checkOutDate, Integer.parseInt(numberOfGuests)).observe(getViewLifecycleOwner(), new Observer<List<RoomDTO>>() {
+        roomViewModel.getAvailableRooms(checkInDate, checkOutDate, numberOfGuests).observe(getViewLifecycleOwner(), new Observer<List<RoomDTO>>() {
             @Override
             public void onChanged(List<RoomDTO> roomDTOs) {
                 progressBar.setVisibility(View.INVISIBLE);
                 if (roomDTOs != null) {
+                    userListResponseData = roomDTOs;
                     setupRecyclerView(roomDTOs);
                 } else {
                     Toast.makeText(getActivity(), "Failed to fetch room data", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+        //Set up the header
+        headingTextView.setText(getString(R.string.title_search_result, numberOfGuests, checkInDate, checkOutDate));
+
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     private void setupRecyclerView(List<RoomDTO> data) {
@@ -87,22 +89,19 @@ public class RoomsListFragment extends Fragment implements ItemClickListener {
     public void onClick(View view, int position) {
         RoomDTO roomData = userListResponseData.get(position);
 
-        String roomType = roomData.getRoom().getType().getTypeName();
-        BigDecimal price = roomData.getRoom().getPricePerNight();
-        int occupancy = roomData.getRoom().getOccupancy();
-
         Bundle bundle = new Bundle();
-        bundle.putString("room name", roomType);
-        bundle.putString("room price", price.toString());
-        bundle.putInt("room occupancy", occupancy);
+        bundle.putParcelable("room", roomData.getRoom());
+        bundle.putString("checkInDate", checkInDate);
+        bundle.putString("checkOutDate", checkOutDate);
+        bundle.putInt("numberOfGuests", numberOfGuests);
 
-//        HotelGuestDetailsFragment hotelGuestDetailsFragment = new HotelGuestDetailsFragment();
-//        hotelGuestDetailsFragment.setArguments(bundle);
-//
-//        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-//        fragmentTransaction.remove(HotelsListFragment.this);
-//        fragmentTransaction.replace(R.id.main_layout, hotelGuestDetailsFragment);
-//        fragmentTransaction.addToBackStack(null);
-//        fragmentTransaction.commitAllowingStateLoss();
+        CheckoutFragment checkoutFragment = new CheckoutFragment();
+        checkoutFragment.setArguments(bundle);
+
+        FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+        fragmentTransaction.remove(RoomsListFragment.this);
+        fragmentTransaction.replace(R.id.frame_layout, checkoutFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commitAllowingStateLoss();
     }
 }

@@ -4,8 +4,20 @@
     <string name="title_location">Location</string>
     <string name="title_gallery">Gallery</string>
     <string name="title_dine">Dine and Drink</string>
-    <string name="title_search_result">Welcome! Available rooms for %1$s guests staying from %2$s to %3$s</string>
+    <string name="title_search_result">Welcome! Available rooms for %1$d guests staying from %2$s to %3$s</string>
     <string name="title_guest">Guest Information</string>
+    <string name="title_stay_info">Stay Information</string>
+    <string name="title_charge_info">Summary of Charges</string>
+    <string name="title_total">Total</string>
+    <string name="title_tax">Tax</string>
+    <string name="title_status">Status</string>
+    <string name="title_reserve_info">Reservation Record</string>
+    <string name="title_reserve_id">Reservation ID</string>
+    <string name="title_reserve_details">Reservation Details</string>
+    <string name="title_language">Language</string>
+    <string name="option_en">English</string>
+    <string name="option_tc">Traditional Chinese</string>
+
     <string name="menu_home">Home</string>
 
     <string name="hint_check_in_date">Check-in Date</string>
