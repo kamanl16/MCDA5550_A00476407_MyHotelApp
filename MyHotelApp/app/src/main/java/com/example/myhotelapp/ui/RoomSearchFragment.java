@@ -54,7 +54,6 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 public class RoomSearchFragment extends Fragment {
-    private List<DineImage> imageDataList;
     private View view;
     private ConstraintLayout mainLayout;
     private TextView dayOfWeekCheckinTextView, monthYearCheckinTextView, dayOfWeekCheckoutTextView, monthYearCheckoutTextView, errorTextView, errorGuestTextView;
@@ -197,7 +196,6 @@ public class RoomSearchFragment extends Fragment {
                 }
             }
         });
-        setupRecyclerView();
     }
 
     private void DatePickerdialog() {
@@ -245,19 +243,5 @@ public class RoomSearchFragment extends Fragment {
 
         // Showing the date picker dialog
         datePicker.show(getChildFragmentManager(), "DATE_PICKER");
-    }
-
-    private void setupRecyclerView() {
-        imageDataList = new ArrayList<>();
-
-        // Populate the list with ImageData objects
-        imageDataList.add(new DineImage(R.drawable.dine1, getString(R.string.name_restaurant1), getString(R.string.name_restaurant1_cusine)));
-        imageDataList.add(new DineImage(R.drawable.dine2, getString(R.string.name_restaurant2), getString(R.string.name_restaurant2_cusine)));
-
-        RecyclerView recyclerView = view.findViewById(R.id.dine_list_recycler_view);
-
-        recyclerView.setLayoutManager((new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false)));
-        DineListAdapter dineListAdapter = new DineListAdapter(getActivity(), imageDataList);
-        recyclerView.setAdapter(dineListAdapter);
     }
 }

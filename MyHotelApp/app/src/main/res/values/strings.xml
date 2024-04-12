@@ -20,10 +20,13 @@
     <string name="title_language">Language</string>
     <string name="option_en">English</string>
     <string name="option_tc">Traditional Chinese</string>
+    <string name="desc_stay_date">%1$s to %2$s (%3$d Night(s))</string>
+    reservation.getRoom().getType().getTypeName() + ", " + reservation.getRoom().getType().getBedType() + ", " + reservation.getRoom().getType().getView());
+
 
     <string name="menu_home">Home</string>
-    <string name="menu_edit">Edit</string>
-    <string name="menu_more">More</string>
+    <string name="menu_reserve">Reserve</string>
+    <string name="menu_check">Check</string>
 
     <string name="hint_check_in_date">Check-in Date</string>
     <string name="hint_check_out_date">Check-out Date</string>

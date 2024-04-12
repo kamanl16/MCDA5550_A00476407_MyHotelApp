@@ -4,38 +4,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myhotelapp.R;
-import com.example.myhotelapp.model.Guest;
-import com.example.myhotelapp.model.Reservation;
 import com.example.myhotelapp.model.ReservationDTO;
-import com.example.myhotelapp.model.Room;
-import com.example.myhotelapp.model.RoomDTO;
-import com.example.myhotelapp.viewmodel.ReservationViewModel;
-import com.example.myhotelapp.viewmodel.RoomViewModel;
-import com.google.android.material.textfield.TextInputEditText;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.sql.Date;
 import java.text.DecimalFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 public class ReservationRecordFragment extends Fragment {
@@ -89,9 +72,18 @@ public class ReservationRecordFragment extends Fragment {
 
         long daysDifference = ChronoUnit.DAYS.between(LocalDate.parse(checkInDate), LocalDate.parse(checkOutDate));
 
-        stayDateTextView.setText(checkInDate + " to " + checkOutDate + " (" + daysDifference + " Night(s))");
-        roomTypeTextView.setText(reservation.getRoom().getType().getTypeName() + ", " + reservation.getRoom().getType().getBedType() + ", " + reservation.getRoom().getType().getView());
 
+        stayDateTextView.setText(getString(R.string.desc_stay_date, checkInDate, checkOutDate, daysDifference));
+
+        Locale currentLocale = getResources().getConfiguration().locale;
+        String localeLanguage = currentLocale.getLanguage();
+
+        if ("zh".equals(localeLanguage)) {
+            roomTypeTextView.setText(reservation.getRoom().getType().getTypeName_TC() + ", " + reservation.getRoom().getType().getBedType_TC() + ", " + reservation.getRoom().getType().getView_TC());
+
+        } else {
+            roomTypeTextView.setText(reservation.getRoom().getType().getTypeName() + ", " + reservation.getRoom().getType().getBedType() + ", " + reservation.getRoom().getType().getView());
+        }
         setGuestInfo();
     }
 

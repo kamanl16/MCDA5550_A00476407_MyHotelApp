@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">我的應用</string>
-    <string name="title_reserve">歡迎使用我的應用！</string>
+    <string name="app_name">我的酒店應用</string>
+    <string name="title_reserve">預訂房間</string>
     <string name="title_location">地點</string>
     <string name="title_gallery">圖庫</string>
     <string name="title_dine">餐飲</string>
@@ -24,10 +24,11 @@
     <string name="EmptyDateError">請選擇入住和退房日期</string>
     <string name="name_restaurant1_cusine">意大利餐廳</string>
     <string name="name_restaurant2_cusine">熱帶風味咖啡廳</string>
-    <string name="menu_edit">編輯</string>
-    <string name="menu_more">更多</string>
     <string name="hint_reservation_id">預訂ID</string>
     <string name="title_name">賓客名稱</string>
     <string name="title_email">電郵地址</string>
     <string name="title_phone">電話號碼</string>
+    <string name="desc_stay_date">%1$s 至 %2$s (%3$d 晚)</string>
+    <string name="menu_reserve">預訂房間</string>
+    <string name="menu_check">查看預約</string>
 </resources>

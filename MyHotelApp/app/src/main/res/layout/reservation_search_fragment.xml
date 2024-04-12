@@ -71,6 +71,7 @@
                             android:layout_height="wrap_content"
                             android:cursorVisible="false"
                             android:paddingBottom="20dp"
+                            android:gravity="center"
                             android:textColor="@color/colorOnPrimary"
                             android:textSize="@dimen/text_size_medium" />
 
