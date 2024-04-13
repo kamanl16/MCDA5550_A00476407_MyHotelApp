@@ -4,9 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.myhotelapp.data.repository.repository.ImageRepository;
-import com.example.myhotelapp.data.repository.repository.RoomRepository;
 import com.example.myhotelapp.model.ImageData;
-import com.example.myhotelapp.model.RoomDTO;
 
 import java.util.List;
 

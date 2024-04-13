@@ -23,7 +23,6 @@ import com.example.myhotelapp.model.Guest;
 import com.example.myhotelapp.model.Reservation;
 import com.example.myhotelapp.model.ReservationDTO;
 import com.example.myhotelapp.model.Room;
-import com.example.myhotelapp.model.RoomDTO;
 import com.example.myhotelapp.viewmodel.ReservationViewModel;
 import com.example.myhotelapp.viewmodel.RoomViewModel;
 import com.google.android.material.textfield.TextInputEditText;
@@ -31,10 +30,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.sql.Date;
-import java.text.DecimalFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -188,25 +184,19 @@ public class CheckoutFragment extends Fragment {
         chargeTotalTextView.setText("CAD " + totalPrice);
 
         submitButton = view.findViewById(R.id.submit_button);
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    reservationViewModel.addReservation(room.getRoomId(), checkInDate, checkOutDate, totalPrice, getGuestInfo()).observe(getViewLifecycleOwner(), new Observer<Reservation>() {
-                        @Override
-                        public void onChanged(Reservation reservation) {
-                            if (reservation != null) {
-                                goToResultFragment(reservation);
-                            } else {
-                                Toast.makeText(getActivity(), "Failed to reserve. \nPlease try again later.", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                } catch (ParseException e) {
-                    throw new RuntimeException(e);
-                }
-
+        submitButton.setOnClickListener(v -> {
+            try {
+                reservationViewModel.addReservation(room.getRoomId(), checkInDate, checkOutDate, totalPrice, getGuestInfo()).observe(getViewLifecycleOwner(), reservation -> {
+                    if (reservation != null) {
+                        goToResultFragment(reservation);
+                    } else {
+                        Toast.makeText(getActivity(), "Failed to reserve. \nPlease try again later.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
             }
+
         });
     }
 

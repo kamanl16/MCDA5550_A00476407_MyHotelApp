@@ -1,5 +1,6 @@
 package com.example.myhotelapp.data.repository.repository;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -26,7 +27,7 @@ public class RoomRepository {
         MutableLiveData<List<RoomDTO>> roomsLiveData = new MutableLiveData<>();
         ApiClient.getApiService().getAvailableRooms(checkInDate, checkOutDate, numberOfGuests).enqueue(new Callback<List<RoomDTO>>() {
             @Override
-            public void onResponse(Call<List<RoomDTO>> call, Response<List<RoomDTO>> response) {
+            public void onResponse(@NonNull Call<List<RoomDTO>> call, @NonNull Response<List<RoomDTO>> response) {
                 if (response.isSuccessful()) {
                     roomsLiveData.setValue(response.body());
                 } else {
@@ -35,7 +36,7 @@ public class RoomRepository {
             }
 
             @Override
-            public void onFailure(Call<List<RoomDTO>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<RoomDTO>> call, @NonNull Throwable t) {
                 roomsLiveData.setValue(null);
             }
         });

@@ -1,16 +1,12 @@
 package com.example.myhotelapp.viewmodel;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.myhotelapp.R;
 import com.example.myhotelapp.data.repository.repository.ReservationRepository;
-import com.example.myhotelapp.data.repository.repository.RoomRepository;
 import com.example.myhotelapp.model.Guest;
 import com.example.myhotelapp.model.Reservation;
 import com.example.myhotelapp.model.ReservationDTO;
-import com.example.myhotelapp.model.RoomDTO;
 
 import java.math.BigDecimal;
 import java.sql.Date;

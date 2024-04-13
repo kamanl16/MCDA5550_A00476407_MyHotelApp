@@ -6,7 +6,6 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 public class Room implements Parcelable {
     private Long roomId;
@@ -87,7 +86,7 @@ public class Room implements Parcelable {
         } else {
             dest.writeByte((byte) 0);
         }
-        dest.writeParcelable((Parcelable) type, flags);
+        dest.writeParcelable(type, flags);
         if (pricePerNight != null) {
             dest.writeString(pricePerNight.toString());
         } else {

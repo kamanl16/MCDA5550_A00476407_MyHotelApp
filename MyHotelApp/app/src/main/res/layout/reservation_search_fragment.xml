@@ -54,7 +54,7 @@
                     android:padding="20dp">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/text_input_layout_resrvatino_id"
+                        android:id="@+id/text_input_layout_reservation_id"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/text_input_resrvation_id"
+                            android:id="@+id/text_input_reservation_id"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:cursorVisible="false"
@@ -85,9 +85,9 @@
                         android:layout_marginBottom="2dp"
                         android:text="@string/hint_reservation_id"
                         android:textSize="@dimen/text_size_xsmall"
-                        app:layout_constraintBottom_toBottomOf="@id/text_input_layout_resrvatino_id"
-                        app:layout_constraintEnd_toEndOf="@+id/text_input_layout_resrvatino_id"
-                        app:layout_constraintStart_toStartOf="@+id/text_input_layout_resrvatino_id" />
+                        app:layout_constraintBottom_toBottomOf="@id/text_input_layout_reservation_id"
+                        app:layout_constraintEnd_toEndOf="@+id/text_input_layout_reservation_id"
+                        app:layout_constraintStart_toStartOf="@+id/text_input_layout_reservation_id" />
 
                     <Button
                         android:id="@+id/search_button"
@@ -98,9 +98,9 @@
                         android:text="@string/button_search"
                         android:textColor="@color/colorOnPrimary"
                         android:textSize="@dimen/text_size_medium"
-                        app:layout_constraintEnd_toEndOf="@id/text_input_layout_resrvatino_id"
-                        app:layout_constraintStart_toStartOf="@id/text_input_layout_resrvatino_id"
-                        app:layout_constraintTop_toBottomOf="@id/text_input_layout_resrvatino_id" />
+                        app:layout_constraintEnd_toEndOf="@id/text_input_layout_reservation_id"
+                        app:layout_constraintStart_toStartOf="@id/text_input_layout_reservation_id"
+                        app:layout_constraintTop_toBottomOf="@id/text_input_layout_reservation_id" />
 
                     <TextView
                         android:id="@+id/error_text_view"

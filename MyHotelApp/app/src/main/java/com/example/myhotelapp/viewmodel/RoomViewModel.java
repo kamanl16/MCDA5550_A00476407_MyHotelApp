@@ -3,8 +3,6 @@ package com.example.myhotelapp.viewmodel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.myhotelapp.model.Reservation;
-import com.example.myhotelapp.model.Room;
 import com.example.myhotelapp.data.repository.repository.RoomRepository;
 import com.example.myhotelapp.model.RoomDTO;
 

@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myhotelapp.ui.HomeFragment;
 import com.example.myhotelapp.ui.ReservationCheckFragment;
 import com.example.myhotelapp.ui.RoomSearchFragment;
-import com.example.myhotelapp.ui.SettingFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnItemSelectedListener {

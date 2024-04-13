@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 public class Reservation implements Parcelable {
 

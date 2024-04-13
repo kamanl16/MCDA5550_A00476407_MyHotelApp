@@ -23,7 +23,6 @@ import com.example.myhotelapp.adapter.RoomlListAdapter;
 import com.example.myhotelapp.model.RoomDTO;
 import com.example.myhotelapp.viewmodel.RoomViewModel;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public class RoomsListFragment extends Fragment implements ItemClickListener {
@@ -55,21 +54,18 @@ public class RoomsListFragment extends Fragment implements ItemClickListener {
         checkOutDate = getArguments().getString("check out date");
         numberOfGuests = getArguments().getInt("number of guests");
 
-        roomViewModel.getAvailableRooms(checkInDate, checkOutDate, numberOfGuests).observe(getViewLifecycleOwner(), new Observer<List<RoomDTO>>() {
-            @Override
-            public void onChanged(List<RoomDTO> roomDTOs) {
-                progressBar.setVisibility(View.INVISIBLE);
-                if (roomDTOs != null) {
-                    if (roomDTOs.size() > 0) {
-                        userListResponseData = roomDTOs;
-                        headingTextView.setText(getString(R.string.title_search_result, numberOfGuests, checkInDate, checkOutDate));
-                        setupRecyclerView(roomDTOs);
-                    } else {
-                        headingTextView.setText(getString(R.string.title_search_result_nth, numberOfGuests, checkInDate, checkOutDate));
-                    }
+        roomViewModel.getAvailableRooms(checkInDate, checkOutDate, numberOfGuests).observe(getViewLifecycleOwner(), roomDTOs -> {
+            progressBar.setVisibility(View.INVISIBLE);
+            if (roomDTOs != null) {
+                if (roomDTOs.size() > 0) {
+                    userListResponseData = roomDTOs;
+                    headingTextView.setText(getString(R.string.title_search_result, numberOfGuests, checkInDate, checkOutDate));
+                    setupRecyclerView(roomDTOs);
                 } else {
-                    Toast.makeText(getActivity(), "Failed to fetch room data", Toast.LENGTH_SHORT).show();
+                    headingTextView.setText(getString(R.string.title_search_result_nth, numberOfGuests, checkInDate, checkOutDate));
                 }
+            } else {
+                Toast.makeText(getActivity(), "Failed to fetch room data", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -19,7 +19,6 @@ import com.example.myhotelapp.adapter.DineListAdapter;
 import com.example.myhotelapp.adapter.GallaryAdapter;
 import com.example.myhotelapp.model.DineImage;
 import com.example.myhotelapp.model.ImageData;
-import com.example.myhotelapp.model.RoomDTO;
 import com.example.myhotelapp.viewmodel.ImageViewModel;
 
 import java.util.ArrayList;
@@ -45,15 +44,12 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        imageViewModel.getAllImages().observe(getViewLifecycleOwner(), new Observer<List<ImageData>>() {
-            @Override
-            public void onChanged(List<ImageData> image) {
-                if (image != null) {
-                    gallery = image;
-                    setupGalleryRecyclerView(gallery);
-                } else {
-                    Toast.makeText(getActivity(), "Failed to fetch room data", Toast.LENGTH_SHORT).show();
-                }
+        imageViewModel.getAllImages().observe(getViewLifecycleOwner(), image -> {
+            if (image != null) {
+                gallery = image;
+                setupGalleryRecyclerView(gallery);
+            } else {
+                Toast.makeText(getActivity(), "Failed to fetch room data", Toast.LENGTH_SHORT).show();
             }
         });
         setupRecyclerView();

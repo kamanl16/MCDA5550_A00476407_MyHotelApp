@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.myhotelapp.data.api.ApiClient;
 import com.example.myhotelapp.model.ImageData;
-import com.example.myhotelapp.model.RoomDTO;
 
 import java.util.List;
 

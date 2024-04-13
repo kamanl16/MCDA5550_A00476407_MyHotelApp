@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myhotelapp.R;
@@ -43,7 +42,7 @@ public class ReservationCheckFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         errorTextView = view.findViewById(R.id.error_text_view);
-        reservationIdTextView = view.findViewById(R.id.text_input_resrvation_id);
+        reservationIdTextView = view.findViewById(R.id.text_input_reservation_id);
         reservationIdTextView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -76,30 +75,24 @@ public class ReservationCheckFragment extends Fragment {
             }
         });
         searchButton = view.findViewById(R.id.search_button);
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    if (isIDChecked) {
-                        reservationViewModel.getReservationById(reservationIdTextView.getText().toString()).observe(getViewLifecycleOwner(), new Observer<ReservationDTO>() {
-                            @Override
-                            public void onChanged(ReservationDTO reservation) {
-                                if (reservation != null) {
-                                    goToResultFragment(reservation);
-                                } else {
-                                    Toast.makeText(getActivity(), "No records are found.\nPlease try another ID.", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-                    } else {
-                        if (errorTextView.getText().toString() == null || errorTextView.getText().toString().trim().isEmpty())
-                            errorTextView.setText("Please enter reservation id");
-                    }
-                } catch (ParseException e) {
-                    throw new RuntimeException(e);
+        searchButton.setOnClickListener(v -> {
+            try {
+                if (isIDChecked) {
+                    reservationViewModel.getReservationById(reservationIdTextView.getText().toString()).observe(getViewLifecycleOwner(), reservation -> {
+                        if (reservation != null) {
+                            goToResultFragment(reservation);
+                        } else {
+                            Toast.makeText(getActivity(), "No records are found.\nPlease try another ID.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else {
+                    if (errorTextView.getText().toString().trim().isEmpty())
+                        errorTextView.setText("Please enter reservation id");
                 }
-
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
             }
+
         });
     }
 

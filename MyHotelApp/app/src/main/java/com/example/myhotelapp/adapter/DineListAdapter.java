@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myhotelapp.R;
 import com.example.myhotelapp.model.DineImage;
-import com.example.myhotelapp.model.ImageData;
-import com.example.myhotelapp.model.Room;
 
 import java.util.List;
 

@@ -12,11 +12,9 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.myhotelapp.R;
 import com.example.myhotelapp.model.ImageData;
-import com.example.myhotelapp.model.Room;
 import com.example.myhotelapp.model.RoomDTO;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class RoomlListAdapter extends RecyclerView.Adapter<RoomlListAdapter.ViewHolder> {

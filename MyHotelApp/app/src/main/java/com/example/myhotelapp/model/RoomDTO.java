@@ -58,7 +58,7 @@ public class RoomDTO implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeParcelable((Parcelable) room, flags);
+        dest.writeParcelable(room, flags);
         dest.writeList(images);
     }
 }

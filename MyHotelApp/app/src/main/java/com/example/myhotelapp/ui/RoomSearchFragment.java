@@ -1,11 +1,8 @@
 package com.example.myhotelapp.ui;
 
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.InputFilter;
-import android.text.Spanned;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,9 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,31 +19,17 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.util.Pair;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.myhotelapp.R;
-import com.example.myhotelapp.adapter.DineListAdapter;
-import com.example.myhotelapp.adapter.RoomlListAdapter;
-import com.example.myhotelapp.model.DineImage;
-import com.example.myhotelapp.model.ImageData;
-import com.example.myhotelapp.model.Room;
-import com.example.myhotelapp.viewmodel.ReservationViewModel;
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.DateValidatorPointForward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.squareup.picasso.Picasso;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -91,49 +71,29 @@ public class RoomSearchFragment extends Fragment {
         monthYearCheckoutTextView = view.findViewById(R.id.text_month_year_checkout);
 
         textInputCheckin = view.findViewById(R.id.text_input_checkin);
-//        textInputCheckin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                DatePickerdialog();
-//            }
-//        });
-        textInputCheckin.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                v.onTouchEvent(event);
-                InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                if (imm != null) {
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                }
-                if (event.getAction() == MotionEvent.ACTION_UP) {   // another option would be ACTION_DOWN for example
-                    DatePickerdialog();
-                }
-                return true;
+        textInputCheckin.setOnTouchListener((v, event) -> {
+            v.onTouchEvent(event);
+            InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
             }
+            if (event.getAction() == MotionEvent.ACTION_UP) {   // another option would be ACTION_DOWN for example
+                DatePickerdialog();
+            }
+            return true;
         });
 
         textInputCheckout = view.findViewById(R.id.text_input_checkout);
-//        textInputCheckout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                DatePickerdialog();
-//            }
-//        });
-        textInputCheckout.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                v.onTouchEvent(event);
-                InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                if (imm != null) {
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                }
-                if (event.getAction() == MotionEvent.ACTION_UP) {   // another option would be ACTION_DOWN for example
-                    DatePickerdialog();
-                }
-                return true;
+        textInputCheckout.setOnTouchListener((v, event) -> {
+            v.onTouchEvent(event);
+            InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
             }
+            if (event.getAction() == MotionEvent.ACTION_UP) {   // another option would be ACTION_DOWN for example
+                DatePickerdialog();
+            }
+            return true;
         });
 
         guestsCountEditText = view.findViewById(R.id.text_input_guest);
@@ -171,29 +131,26 @@ public class RoomSearchFragment extends Fragment {
         });
 
         searchButton = view.findViewById(R.id.search_button);
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i("log", "This is the on click listener");
-                if (checkInDate == null || checkOutDate == null) {
-                    errorTextView.setVisibility(View.VISIBLE);
-                } else if (!isGuestNoOK) {
-                    errorGuestTextView.setText("Number of guests must be greater than 0");
-                } else {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("check in date", checkInDate);
-                    bundle.putString("check out date", checkOutDate);
-                    bundle.putInt("number of guests", numberOfGuests);
+        searchButton.setOnClickListener(v -> {
+            Log.i("log", "This is the on click listener");
+            if (checkInDate == null || checkOutDate == null) {
+                errorTextView.setVisibility(View.VISIBLE);
+            } else if (!isGuestNoOK) {
+                errorGuestTextView.setText("Number of guests must be greater than 0");
+            } else {
+                Bundle bundle = new Bundle();
+                bundle.putString("check in date", checkInDate);
+                bundle.putString("check out date", checkOutDate);
+                bundle.putInt("number of guests", numberOfGuests);
 
-                    RoomsListFragment roomsListFragment = new RoomsListFragment();
-                    roomsListFragment.setArguments(bundle);
+                RoomsListFragment roomsListFragment = new RoomsListFragment();
+                roomsListFragment.setArguments(bundle);
 
-                    FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();//getFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.frame_layout, roomsListFragment);
-                    fragmentTransaction.remove(RoomSearchFragment.this);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
-                }
+                FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();//getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.frame_layout, roomsListFragment);
+                fragmentTransaction.remove(RoomSearchFragment.this);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         });
     }
