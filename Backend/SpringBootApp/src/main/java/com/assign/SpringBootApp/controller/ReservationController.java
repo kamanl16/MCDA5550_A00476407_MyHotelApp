@@ -26,7 +26,7 @@ public class ReservationController {
     @Autowired
     private ReservationGuestService reservationGuestService;
 
-    @PostMapping()
+    @PostMapping("")
     public ResponseEntity<Reservation> addReservation(@RequestBody ReservationDTO reservationDTO) {
         try {
             Reservation reservation = reservationGuestService.addGuestsAndLinkToReservation(reservationDTO.getGuests(), reservationDTO.getReservation());

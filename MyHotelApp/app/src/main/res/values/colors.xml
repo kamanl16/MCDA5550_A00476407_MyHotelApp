@@ -4,8 +4,8 @@
     <color name="white">#FFFFFFFF</color>
 
     <!-- Primary Colors -->
-    <color name="colorPrimary">#F0B888</color>
-    <color name="colorPrimaryVariant">#F4D5BA</color>
+    <color name="colorPrimary">#F4D5BA</color>
+    <color name="colorPrimaryVariant">#F0B888</color>
     <color name="colorPrimaryLight">#FAEEE3</color>
     <color name="colorPrimaryDark">#442C2E</color>
 

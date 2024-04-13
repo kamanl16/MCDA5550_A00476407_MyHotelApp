@@ -1,0 +1,1 @@
+web: java -Djasypt.encryptor.password=A00476407 -jar SpringBootApp-0.0.1-SNAPSHOT.jar

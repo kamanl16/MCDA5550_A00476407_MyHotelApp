@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    private static final String BASE_URL = "http://140.184.183.31:8080/";
+    private static final String BASE_URL = "http://hotel-env.eba-jpnyjpwj.us-east-1.elasticbeanstalk.com/";
 
     private static Retrofit getClient() {
         // Create a custom Gson instance with custom settings
