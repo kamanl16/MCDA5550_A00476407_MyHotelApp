@@ -15,7 +15,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnItemSelectedListener {
     BottomNavigationView bottomNavigationView;
     HomeFragment homeFragment = new HomeFragment();
-    ReservationCheckFragment reservationCheckFragment = new ReservationCheckFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
 
             case R.id.more_menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, reservationCheckFragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new ReservationCheckFragment()).commit();
                 return true;
         }
         return false;

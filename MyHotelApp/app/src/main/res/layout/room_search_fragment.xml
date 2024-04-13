@@ -40,6 +40,7 @@
                 android:layout_margin="8dp"
                 app:cardCornerRadius="@dimen/box_radius"
                 app:cardElevation="3dp"
+                app:cardUseCompatPadding="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title_text_view"

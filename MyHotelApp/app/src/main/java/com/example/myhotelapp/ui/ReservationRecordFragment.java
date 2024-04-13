@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.myhotelapp.R;
 import com.example.myhotelapp.model.ReservationDTO;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.sql.Date;
 import java.text.DecimalFormat;
@@ -90,6 +92,15 @@ public class ReservationRecordFragment extends Fragment {
     private void setGuestInfo() {
         for (int i = 0; i < guestInfoLayout.getChildCount(); i++) {
             View guestView = guestInfoLayout.getChildAt(i);
+
+            TextView nameInputLayout = guestView.findViewById(R.id.name_title_text_view);
+            TextView emailInputLayout = guestView.findViewById(R.id.email_title_text_view);
+            TextView phoneInputLayout = guestView.findViewById(R.id.phone_title_text_view);
+
+            nameInputLayout.setText(getString(R.string.title_name, (i + 1)));
+            emailInputLayout.setText(getString(R.string.title_email, (i + 1)));
+            phoneInputLayout.setText(getString(R.string.title_phone, (i + 1)));
+
             TextView nameTextView = guestView.findViewById(R.id.name_text_view);
             TextView emailTextView = guestView.findViewById(R.id.email_text_view);
             TextView phoneTextView = guestView.findViewById(R.id.phone_text_view);

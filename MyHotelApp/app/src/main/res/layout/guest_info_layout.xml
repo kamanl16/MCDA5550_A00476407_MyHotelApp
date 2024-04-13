@@ -21,7 +21,6 @@
             android:id="@+id/nameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name"
             android:singleLine="true"
             android:textColor="@color/colorOnPrimary"
             android:textSize="@dimen/text_size_small" />
@@ -43,7 +42,6 @@
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
             android:singleLine="true"
             android:textColor="@color/colorOnPrimary"
             android:textSize="@dimen/text_size_small" />
@@ -65,9 +63,16 @@
             android:id="@+id/phoneEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone"
             android:singleLine="true"
             android:textColor="@color/colorOnPrimary"
             android:textSize="@dimen/text_size_small" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/divider_margin"
+            app:layout_constraintTop_toBottomOf="@id/dine_list_recycler_view" />
+
     </com.google.android.material.textfield.TextInputLayout>
 </LinearLayout>

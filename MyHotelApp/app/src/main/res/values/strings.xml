@@ -5,6 +5,7 @@
     <string name="title_gallery">Gallery</string>
     <string name="title_dine">Dine and Drink</string>
     <string name="title_search_result">Welcome! Available rooms for %1$d guests staying from %2$s to %3$s</string>
+    <string name="title_search_result_nth">Sorry, currently we don\'t have available rooms for %1$d guests staying from %2$s to %3$s</string>
     <string name="title_guest">Guest Information</string>
     <string name="title_stay_info">Stay Information</string>
     <string name="title_charge_info">Summary of Charges</string>
@@ -14,15 +15,13 @@
     <string name="title_reserve_info">Reservation Record</string>
     <string name="title_reserve_id">Reservation ID</string>
     <string name="title_reserve_details">Reservation Details</string>
-    <string name="title_name">Guest Name</string>
-    <string name="title_email">Email</string>
-    <string name="title_phone">Phone</string>
+    <string name="title_name">Guest %1$d Name</string>
+    <string name="title_email">Guest %1$d Email</string>
+    <string name="title_phone">Guest %1$d Phone</string>
     <string name="title_language">Language</string>
     <string name="option_en">English</string>
     <string name="option_tc">Traditional Chinese</string>
     <string name="desc_stay_date">%1$s to %2$s (%3$d Night(s))</string>
-    reservation.getRoom().getType().getTypeName() + ", " + reservation.getRoom().getType().getBedType() + ", " + reservation.getRoom().getType().getView());
-
 
     <string name="menu_home">Home</string>
     <string name="menu_reserve">Reserve</string>

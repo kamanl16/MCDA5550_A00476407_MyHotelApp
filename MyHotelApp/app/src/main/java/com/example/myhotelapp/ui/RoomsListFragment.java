@@ -60,15 +60,18 @@ public class RoomsListFragment extends Fragment implements ItemClickListener {
             public void onChanged(List<RoomDTO> roomDTOs) {
                 progressBar.setVisibility(View.INVISIBLE);
                 if (roomDTOs != null) {
-                    userListResponseData = roomDTOs;
-                    setupRecyclerView(roomDTOs);
+                    if (roomDTOs.size() > 0) {
+                        userListResponseData = roomDTOs;
+                        headingTextView.setText(getString(R.string.title_search_result, numberOfGuests, checkInDate, checkOutDate));
+                        setupRecyclerView(roomDTOs);
+                    } else {
+                        headingTextView.setText(getString(R.string.title_search_result_nth, numberOfGuests, checkInDate, checkOutDate));
+                    }
                 } else {
                     Toast.makeText(getActivity(), "Failed to fetch room data", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        //Set up the header
-        headingTextView.setText(getString(R.string.title_search_result, numberOfGuests, checkInDate, checkOutDate));
 
         progressBar.setVisibility(View.VISIBLE);
     }

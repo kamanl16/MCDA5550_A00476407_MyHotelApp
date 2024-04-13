@@ -83,6 +83,10 @@ public class CheckoutFragment extends Fragment {
             TextInputLayout phoneInputLayout = guestView.findViewById(R.id.phoneInputLayout);
             TextInputEditText phoneEditText = guestView.findViewById(R.id.phoneEditText);
 
+            nameInputLayout.setHint(getString(R.string.title_name, (i + 1)));
+            emailInputLayout.setHint(getString(R.string.title_email, (i + 1)));
+            phoneInputLayout.setHint(getString(R.string.title_phone, (i + 1)));
+
             nameEditText.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
