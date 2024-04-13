@@ -13,8 +13,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.myhotelapp.R;
 import com.example.myhotelapp.model.ReservationDTO;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.sql.Date;
 import java.text.DecimalFormat;
@@ -34,7 +32,7 @@ public class ReservationRecordFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.reserve_result_fragment, container, false);
+        view = inflater.inflate(R.layout.reservation_result_fragment, container, false);
 
         Bundle arguments = getArguments();
         if (arguments != null) {

@@ -1,13 +1,11 @@
 package com.example.myhotelapp.data.api;
 
-import com.example.myhotelapp.model.Hotel;
 import com.example.myhotelapp.model.ImageData;
 import com.example.myhotelapp.model.Reservation;
 import com.example.myhotelapp.model.ReservationDTO;
 import com.example.myhotelapp.model.Room;
 import com.example.myhotelapp.model.RoomDTO;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import retrofit2.Call;
